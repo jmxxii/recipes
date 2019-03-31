@@ -1,0 +1,35 @@
+{% extends "recipe/base.html" %} 
+{% block content %}
+    <h1 class="py-5">Recipes</h1>
+    {% for recipe in recipes %}
+    {% if recipe.author == user %}
+        <div class="card my-3 bg-info" style="width: 30rem;">
+            <a href="{% url 'recipe-detail' recipe.id %}">
+                <div class="card-body">
+                    <h4 class="card-title text-white">{{ recipe.title }}</h5>
+                        <p class="card-subtitle mb-1 text-white "><strong>{{ recipe.author }}</strong> {{ recipe.date_posted|date:"F d, Y" }}</p>
+                        <hr>
+                        <!-- <p class="card-text text-white">{{ recipe.description }}</p> -->
+                        <!-- <a href="#" class="card-link">Card link</a> -->
+                        <!-- <a href="#" class="card-link">Another link</a> -->
+                    </div>
+                </a>
+                
+        </div>
+        {% else %}
+        <div class="card my-3" style="width: 30rem;">
+                <a href="{% url 'recipe-detail' recipe.id %}">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ recipe.title }}</h5>
+                            <p class="card-subtitle mb-1 text-muted"><strong>{{ recipe.author }}</strong> {{ recipe.date_posted|date:"F d, Y" }}</p>
+                            <hr>
+                            <!-- <p class="card-text">{{ recipe.description }}</p> -->
+                            <!-- <a href="#" class="card-link">Card link</a> -->
+                            <!-- <a href="#" class="card-link">Another link</a> -->
+                        </div>
+                    </a>
+                    
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock content %}

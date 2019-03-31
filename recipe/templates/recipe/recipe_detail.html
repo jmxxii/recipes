@@ -1,0 +1,19 @@
+{% extends "recipe/base.html" %} 
+{% block content %}
+        <div class="card my-3" style="width: 30rem;">
+            <div class="card-body">
+              <h4 class="card-title">{{ object.title }}</h5>
+              <p class="card-subtitle mb-1 text-muted"><strong>{{ object.author }}</strong> {{ object.date_posted|date:"F d, Y" }}</p>
+              <hr>
+              <p class="card-text">{{ object.description }}</p>
+              <p class="card-text">{{ object }}</p>
+              
+              {% if object.author == user %}
+                  <a class="btn btn-outline-info btn-sm mt-1 mb-1" href="">Add Ingredients</a>
+                  <a class="btn btn-outline-info btn-sm mt-1 mb-1" href="{% url 'recipe-update' object.id %}">Update</a>
+                  <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'recipe-delete' object.id %}">Delete</a>
+              {% endif %}
+                  
+            </div>
+        </div>
+{% endblock content %}

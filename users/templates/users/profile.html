@@ -1,0 +1,23 @@
+{% extends "recipe/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="py-5 card my-5">
+    <h5 style="text-align:center;"><strong id="user-name">{{user.username}}</strong></h5>
+    <p style="text-align:center;font-size: smaller;overflow-wrap: break-word;" id="user-email">Email: {{user.email}}</p>
+</div>
+
+<div class="py-5 card my-5">
+        <form method="POST" class="p-5">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Profile-Info</legend>
+                    {{form|crispy}}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Update</button>
+                </div>
+            </form>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends "recipe/base.html" %}
+{% block content %}
+
+    <div class="register card p-5 my-5">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Delete Recipe</legend>
+                <h3>Are you sure you want to delete {{ object.title }} recipe? </h3>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-danger" type="submit">Confirm Delete</button>
+            </div>
+            <a href="{% url 'recipe-detail' object.id %}" class="btn btn-outline-info">Cancel</a>
+        </form>
+    </div>
+
+{% endblock content %}
